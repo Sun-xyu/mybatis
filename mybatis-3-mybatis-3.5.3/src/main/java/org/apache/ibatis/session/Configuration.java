@@ -606,9 +606,11 @@ public class Configuration {
       executor = new BatchExecutor(this, transaction);
     } else if (ExecutorType.REUSE == executorType) {
       executor = new ReuseExecutor(this, transaction);
+      // 默认执行器simple
     } else {
       executor = new SimpleExecutor(this, transaction);
     }
+    // 缓存默认开启
     if (cacheEnabled) {
       executor = new CachingExecutor(executor);
     }
